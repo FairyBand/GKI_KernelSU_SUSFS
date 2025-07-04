@@ -513,6 +513,9 @@ jobs:
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
 
+          # Enable O3 optimize
+          sed -i 's/-O2/-O3/g' ./common/Makefile
+
           # 用于debug config
           tail -n 40 ./common/arch/arm64/configs/gki_defconfig
 
