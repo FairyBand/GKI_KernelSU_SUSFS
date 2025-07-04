@@ -91,7 +91,7 @@ jobs:
 
       # Install ccache
       - name: 安装 依赖
-        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y curl bison flex make binutils dwarves git lld pahole zip perl make gcc build-essentials llvm llvm-ar python3 python-is-python3 bc libssl-dev libelf-dev ccache wget tar
+        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y curl bison flex make binutils dwarves git lld pahole zip perl make gcc build-essential llvm python3 python-is-python3 bc libssl-dev libelf-dev openssl ccache wget tar
 
       - name: 配置 ccache
         run: |
