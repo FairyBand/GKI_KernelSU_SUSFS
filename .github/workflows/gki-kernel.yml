@@ -640,6 +640,8 @@ jobs:
               cd common
 
               export PATH="$GITHUB_WORKSPACE/$CONFIG/zyctoolchain/bin:$PATH"
+              export PATH="$GITHUB_WORKSPACE/$CONFIG/zyctoolchain/aarch64-linux-gnu/bin:$PATH"
+              export PATH="$GITHUB_WORKSPACE/$CONFIG/zyctoolchain/arm-linux-gnueabi/bin:$PATH"
               export PATH="/usr/lib/ccache:$PATH"
 
               echo "--- Clang Version ---"
