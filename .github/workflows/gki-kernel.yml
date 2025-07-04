@@ -210,6 +210,11 @@ jobs:
             patch -p1 < fix_5.15.legacy.patch
           fi
 
+          # Download ZyC Clang toolchain
+          wget https://github.com/ZyCromerZ/Clang/releases/download/21.0.0git-20250704-release/Clang-21.0.0git-20250704.tar.gz
+          tar -xzvf Clang-21.0.0git-20250704.tar.gz ./zyctoolchain
+          sudo chmod -r +x zyctoolchain
+
       - name: 使GKI在一加平台正常使用
         run: |
           if [ "${{ inputs.kernel_version }}" = "6.6" ]; then
@@ -513,9 +518,6 @@ jobs:
           # Remove check_defconfig
           sed -i 's/check_defconfig//' ./common/build.config.gki
 
-          # Enable O3 optimize
-          sed -i 's/-O2/-O3/g' ./common/Makefile
-
           # 用于debug config
           tail -n 40 ./common/arch/arm64/configs/gki_defconfig
 
@@ -636,7 +638,7 @@ jobs:
 
               cd common
 
-              export PATH="$GITHUB_WORKSPACE/$CONFIG/prebuilts/clang/host/linux-x86/$CLANG_VERSION/bin:$PATH"
+              export PATH="$GITHUB_WORKSPACE/$CONFIG/zyctoolchain/bin:$PATH"
               export PATH="$GITHUB_WORKSPACE/$CONFIG/gcc/bin:$PATH"
               export PATH="$GITHUB_WORKSPACE/$CONFIG/prebuilts/kernel-build-tools/linux-x86/bin:$PATH"
               export PATH="/usr/lib/ccache:$PATH"
