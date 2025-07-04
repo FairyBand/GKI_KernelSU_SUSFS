@@ -91,7 +91,9 @@ jobs:
 
       # Install ccache
       - name: 安装 依赖
-        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y curl bison flex make binutils dwarves git lld-20 pahole zip perl make gcc build-essential llvm-20 llvm-20-dev python3 python-is-python3 bc libssl-dev libelf-dev openssl ccache wget tar
+        run: |
+          sudo apt update && sudo apt upgrade -y && sudo apt install -y curl bison flex make binutils dwarves git lld pahole zip perl make gcc build-essential python3 python-is-python3 bc libssl-dev libelf-dev openssl ccache wget tar
+          sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
       - name: 配置 ccache
         run: |
