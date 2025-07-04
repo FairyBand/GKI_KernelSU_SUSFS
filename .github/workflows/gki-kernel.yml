@@ -212,7 +212,8 @@ jobs:
 
           # Download ZyC Clang toolchain
           wget https://github.com/ZyCromerZ/Clang/releases/download/21.0.0git-20250704-release/Clang-21.0.0git-20250704.tar.gz
-          tar -xzvf Clang-21.0.0git-20250704.tar.gz ./zyctoolchain
+          mkdir zyctoolchain
+          tar -xzvf Clang-21.0.0git-20250704.tar.gz -C ./zyctoolchain
           sudo chmod -r +x zyctoolchain
 
       - name: 使GKI在一加平台正常使用
